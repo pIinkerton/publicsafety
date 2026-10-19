@@ -1,0 +1,498 @@
+/* ======================================================================
+   QUICK START
+   1. Edit the settings in :root below to set your site's visual identity.
+   2. Use <main class="container"> for consistent page width and padding.
+   3. Navigation markup:
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </nav>
+      Set aria-current="page" on the current page's link in each HTML file.
+      CSS does NOT determine which page is active automatically.
+   4. Wrap wide tables in:
+        <div class="table-wrap" role="region" aria-label="Results"
+             tabindex="0"> ...table... </div>
+      Use <caption>, <thead>, <tbody>, and <th scope="col"> in your table.
+
+   Avoid repeated inline styles.
+   ====================================================================== */
+
+/* 1. EDITABLE DESIGN SETTINGS */
+:root {
+  /* Typography */
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-heading: "Georgia", Cambria, "Times New Roman", Times, serif;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-h1: 2.25rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.25rem;
+  --weight-body: 400;
+  --weight-heading: 600;
+  --line-height-body: 1.6;
+  --line-height-heading: 1.25;
+  --text-align-body: start; /* start, center, end, or justify */
+  --text-align-heading: start; /* start, center, end, or justify */
+
+  /* Colours: recheck text/background contrast after changing these. */
+  --color-text: #2c3e50;
+  --color-muted: #596a7a;
+  --color-heading: #1a252f;
+  --color-link: #2980b9;
+  --color-link-hover: #1f618d;
+  --bg-page: #fdfbf7;
+  --bg-surface: #ffffff;
+  --color-border: #e2dcd5;
+  --color-focus: #2980b9;
+  --bg-nav: #1a252f;
+  --color-nav-link: #ecf0f1;
+  --bg-nav-hover: #2c3e50;
+  --bg-nav-active: #2980b9;
+  --color-nav-active: #ffffff;
+  --bg-table-header: #f4f0eb;
+  --bg-table-odd: #ffffff;
+  --bg-table-even: #fdfbf7;
+
+  /* Spacing scale: change these to adjust spacing across the site. */
+  --space-xs: 0.375rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --paragraph-gap: var(--space-md);
+  --heading-gap-before: var(--space-xl);
+  --heading-gap-after: var(--space-md);
+
+  /* Layout, component padding, and borders */
+  --content-width: 72rem;
+  --page-padding: var(--space-md);
+  --nav-gap: var(--space-sm);
+  --table-cell-padding: 0.75rem 1rem;
+  --border-width: 1px;
+  --radius: 0.25rem;
+}
+
+/* 2. BASE TYPOGRAPHY AND BACKGROUND */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: var(--weight-body);
+  line-height: var(--line-height-body);
+  text-align: var(--text-align-body);
+  color: var(--color-text);
+  background-color: var(--bg-page);
+  overflow-wrap: break-word;
+}
+p, ul, ol { margin-block: 0 var(--paragraph-gap); }
+ul, ol { padding-inline-start: var(--space-lg); }
+li + li { margin-block-start: var(--space-xs); }
+small, .text-small { font-size: var(--font-size-small); }
+.text-muted { color: var(--color-muted); }
+.text-center { text-align: center; }
+.text-start { text-align: start; }
+.text-end { text-align: end; }
+a { color: var(--color-link); text-underline-offset: 0.2em; }
+a:hover { color: var(--color-link-hover); }
+img, video { max-width: 100%; height: auto; }
+
+/* Keep visible keyboard focus; do not replace this with outline: none. */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+[hidden] { display: none !important; }
+
+/* 3. PAGE LAYOUT, MARGINS, AND PADDING */
+
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: var(--page-padding);
+}
+
+/* 4. HEADINGS: h1 = page title; h2 = section; h3 = subsection */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  line-height: var(--line-height-heading);
+  text-align: var(--text-align-heading);
+  color: var(--color-heading);
+  margin-block: var(--heading-gap-before) var(--heading-gap-after);
+}
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4, h5, h6 { font-size: var(--font-size-body); }
+h1:first-child, h2:first-child, h3:first-child { margin-block-start: 0; }
+
+/* 5. NAVIGATION: stacked on mobile; horizontal and wrapping on tablet+ 
+You can delete this block if you want to have your own navigation style.*/
+
+.site-nav {
+  padding: var(--space-sm) var(--page-padding);
+  background-color: var(--bg-nav);
+}
+.nav-list {
+  /*align-items: center;*/
+  display: flex;
+  flex-direction: column;
+  gap: var(--nav-gap);
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.nav-list > li { margin: 0; }
+.nav-list a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-nav-link);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.nav-list a:hover {
+  background-color: var(--bg-nav-hover);
+  text-decoration: underline;
+}
+.nav-list a[aria-current="page"] {
+  color: var(--color-nav-active);
+  background-color: var(--bg-nav-active);
+  font-weight: var(--weight-heading);
+  text-decoration: underline;
+}
+.nav-list a:focus-visible { outline-color: var(--color-nav-link); }
+
+.nav-list > .nav-end {
+  display: flex;
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+.nav-button {
+  background: transparent;
+  color: var(--color-nav-link);
+  border: var(--border-width) solid var(--color-nav-link);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
+  font-weight: var(--weight-heading);
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background-color: var(--bg-nav-hover);
+}
+
+/* Accessibility mode switched on */
+.nav-button[aria-pressed="true"] {
+  background-color: var(--bg-nav-active);
+  color: var(--color-nav-active);
+  border-color: var(--bg-nav-active);
+}
+
+.nav-button:focus-visible {
+  outline-color: var(--color-nav-link);
+}
+
+/* 6. TABLES: padding spaces cell contents; collapsed borders have no gaps.
+   For actual gaps BETWEEN cells instead, use border-collapse: separate;
+   border-spacing: 0.25rem; on table. 
+   You can delete this block if you want to have your own table style.*/
+   
+.table-wrap { max-width: 100%; overflow-x: auto; }
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: var(--bg-surface);
+}
+caption {
+  padding-block: var(--space-sm);
+  font-weight: var(--weight-heading);
+  text-align: start;
+}
+th, td {
+  padding: var(--table-cell-padding);
+  border: var(--border-width) solid var(--color-border);
+  text-align: start;
+  vertical-align: top;
+}
+.col-year {
+  width: 8rem;
+}
+.col-data {
+  width: auto;
+}
+thead th { background-color: var(--bg-table-header); }
+tbody tr:nth-child(odd) { background-color: var(--bg-table-odd); }
+tbody tr:nth-child(even) { background-color: var(--bg-table-even); }
+
+/* Rollover table */
+.rollover-table tbody tr:hover {
+  outline: var(--border-width) solid var(--color-link);
+  outline-offset: -2px;
+  font-weight: var(--weight-heading);
+}
+
+.rollover-panel {
+  margin-block: var(--space-md) var(--space-lg);
+  padding: var(--space-md);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--bg-surface);
+  min-height: 6.5rem;
+}
+
+.rollover-panel p {
+  margin: 0;
+}
+
+/* 7. RESPONSIVE DESIGN — MOBILE FIRST
+   Base rules above apply at every width; these override them on wider screens.
+   Breakpoints are starting points, not device detection. Adjust after testing.
+   Use literal values here: CSS variables cannot be used in media conditions. */
+
+/* Tablet / medium screens: 48rem and wider (usually 768px). */
+@media (min-width: 48rem) {
+  :root {
+    --font-size-body: 1.0625rem;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 1.75rem;
+    --font-size-h3: 1.375rem;
+    --page-padding: var(--space-lg);
+  }
+  .nav-list { flex-direction: row; flex-wrap: wrap; }
+}
+
+/* Desktop / large screens: 75rem and wider (usually 1200px). */
+@media (min-width: 75rem) {
+  :root {
+    --font-size-body: 1.125rem;
+    --font-size-h1: 3rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.5rem;
+    --page-padding: var(--space-xl);
+  }
+}
+
+/* Images */
+.with-image {
+  margin-block-start: var(--heading-gap-before);
+}
+
+/* Images stacked */
+.float-right,
+.float-left {
+  width: 100%;
+  margin: 0 0 var(--space-md) 0;
+}
+
+.float-right img,
+.float-left img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.float-right figcaption,
+.float-left figcaption {
+  font-size: var(--font-size-small);
+  color: var(--color-muted);
+  margin-top: var(--space-xs);
+}
+
+/* Images side by side */
+@media (min-width: 48rem) {
+  .float-right,
+  .float-left {
+    width: 40%;
+    max-width: 400px;
+  }
+
+  .float-right {
+    float: right;
+    margin: 0 0 var(--space-md) var(--space-xl);
+  }
+
+  .float-left {
+    float: left;
+    margin: 0 var(--space-lg) var(--space-md) 0;
+  }
+}
+
+/* Buttons */
+
+/* Small button */
+.button-small {
+  display: inline-block;
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--bg-nav-active);
+  color: var(--color-nav-active);
+  font-weight: var(--weight-heading);
+  text-decoration: none;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.button-small:hover {
+  background-color: var(--color-link-hover);
+  color: var(--color-nav-active);
+}
+
+.button-small-transparent {
+  padding: var(--space-md) var(--space-lg);
+  background-color: transparent;
+  color: var(--color-link);
+  border: var(--border-width) solid var(--color-link);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--weight-heading);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-small-transparent:hover {
+  background-color: var(--bg-table-header);
+}
+
+.button-small-indent {
+  margin-inline-start: var(--space-md);
+}
+
+/* Align button to right */
+
+/* Button on its own line */
+.button-right {
+  display: block;
+  width: fit-content;
+  margin-block: 0 var(--space-sm);
+  margin-top: 1.5rem;
+}
+
+/* Button to right */
+@media (min-width: 48rem) {
+  .button-right {
+    float: right;
+    margin-block: 0;
+    margin-inline-start: var(--space-md);
+    margin-top: -2.5rem;
+  }
+}
+
+p:has(.button-right) {
+  display: flow-root;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-block: var(--space-lg) var(--space-lg);
+}
+
+/* Survey */
+
+fieldset {
+  margin: 0 0 var(--space-lg);
+  padding: var(--space-md);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--bg-surface);
+}
+
+legend {
+  padding-inline: var(--space-xs);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-body);
+  color: var(--color-heading);
+}
+
+fieldset label {
+  display: block;
+  padding-block: var(--space-xs);
+  cursor: pointer;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-sm);
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-text);
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+  resize: vertical;
+}
+
+select,
+input[type="text"] {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-text);
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.question-label {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-body);
+  color: var(--color-heading);
+}
+
+/* Accessibility mode */
+
+:root[data-theme="accessibility-mode"] {
+  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-size-body: 1.5rem;
+  --font-size-small: 1.3125rem;
+  --font-size-h1: 3.375rem;
+  --font-size-h2: 2.25rem;
+  --font-size-h3: 1.875rem;
+  --weight-body: 525;
+  --weight-heading: 725;
+  --line-height-body: 1.8;
+  --line-height-heading: 1.35;
+  --color-text: #000000;
+  --color-muted: #111111;
+  --color-heading: #000000;
+  --color-link: #0000ee;
+  --color-link-hover: #0000cc;
+  --bg-page: #ffffff;
+  --bg-surface: #ffffff;
+  --color-border: #000000;
+  --color-focus: #0000ff;
+  --bg-nav: #000000;
+  --color-nav-link: #ffffff;
+  --bg-nav-hover: #333333;
+  --bg-nav-active: #ffff00;
+  --color-nav-active: #000000;
+  --bg-table-header: #e5e5e5;
+  --bg-table-odd: #ffffff;
+  --bg-table-even: #f0f0f0;
+}

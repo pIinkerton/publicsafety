@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Actions</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="issue.html">Issue</a></li>
+      <li><a href="actions.html" aria-current="page">Actions</a></li>
+      <li><a href="survey.html">Survey</a></li>
+      <li class="nav-end">
+        <button id="accessibility-toggle" class ="nav-button" aria-pressed="false">
+          Accessibility Mode
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('accessibility-toggle');
+
+    if (localStorage.getItem('theme') === 'accessibility-mode') {
+      root.setAttribute('data-theme', 'accessibility-mode');
+      toggle.setAttribute('aria-pressed', 'true');
+    }
+
+    toggle.addEventListener('click', () => {
+      const turnOn = root.getAttribute('data-theme') !== 'accessibility-mode';
+
+      if (turnOn) {
+        root.setAttribute('data-theme', 'accessibility-mode');
+      } else {
+        root.removeAttribute('data-theme');
+      }
+      toggle.setAttribute('aria-pressed', String(turnOn));
+      localStorage.setItem('theme', turnOn ? 'accessibility-mode' : 'normal');
+    });
+  </script>
+  
+  <main class="container">
+
+    <h1>Actions: What Can Be Done</h1>
+
+    <p>Jump to: <a href="#personal">Personal</a> <strong>·</strong> <a href="#community">Community</a> <strong>·</strong> <a href="#policy">Policy</a></p>
+
+    <section class="with-image">
+      <figure class="float-right">
+        <img src="phonenightime.jpg" alt="Text Alert sign in Sligo" />
+        <figcaption>Sharing your journey home after dark is a simple, low-cost safety habit. Photo: Dragana Vasiljevic</figcaption>
+      </figure>
+
+      <h2><a name="personal" id="personal"></a>Personal</h2>
+      <p>While the burden of responsibility lies on the government and An Garda Síochána, there are still actionable steps we can take to minimise risks to our personal safety. We can plan routes home, share our location with a friend or family member, and choose well-lit, busy routes after dark. Equally important is to report any incidents you witness or experience, as unreported crime can't be included in the figures that shape where policing resources are spent. However, these steps merely mitigate risk rather than remove it, and can limit residents' personal freedoms.</p>
+
+    </section>
+
+    <section class="with-image">
+      <figure class="float-left">
+        <img src="textalertarea.jpg" alt="Text Alert sign in Sligo" />
+        <figcaption>Text Alert sign in Sligo. Photo: Paul Mayall</figcaption>
+      </figure>
+
+      <h2><a name="community" id="community"></a>Community</h2>
+      <p>Residents can join or start a <a href="https://www.garda.ie/en/crime-prevention/community-crime-prevention-programmes/" target="_blank">Neighbourhood Watch</a>, which aims to build relations between the community and An Garda Síochána while increasing public safety. Students can participate in <a href="https://www.garda.ie/en/crime-prevention/crime-prevention/campus-watch/campus-watch-booklet-2024.pdf" target="_blank">Campus Watch</a>, a programme similar to the Neighbourhood Watch scheme. The Garda <a href="https://www.garda.ie/en/crime-prevention/community-crime-prevention-programmes/" target="_blank">Text Alert</a> programme also aids in strengthening links with communities, enabling Gardaí to send one-way alert messages to registered Community Contacts, who forward them to the group. These schemes build local trust at low cost, yet depend on volunteers, and only support policing rather than functioning as a replacement for it.</p>
+
+    </section>
+
+    <section class="with-image">
+      <figure class="float-right">
+        <img src="garda-recruitment.jpg" alt="Text Alert sign in Sligo" />
+        <figcaption>Gardaí seen at a Garda graudation ceremony in Templemore. Photo: RTÉ News</figcaption>
+      </figure>
+
+    <h2><a name="policy" id="policy"></a>Policy</h2>
+    <p>Real, permanent change must come from the government and An Garda Síochána themselves, with a focus on recruitment and improved retention. Fine Gael TD <a href="https://www.facebook.com/EmerCurrieFG/videos/an-update-on-my-campaign-for-a-second-garda-training-college-to-be-located-at-tu/1651620133354537/" target="_blank">Emer Currie has called for a second Garda college</a> based in TUD's Blanchardstown campus, making the profession more accessible to those living in Dublin and the wider Leinster province. She has also <a href="https://dublinpeople.com/news/northsidewest/articles/2025/03/12/northside-td-gardai/#:~:text=Currie called on, and crime levels." target="_blank">requested a report on Garda allocation</a> across Dublin, relative to population and crime rates, which could make distribution fairer. The trade-offs are cost and time, and moving Gardaí to one district can leave another thinner without ample recruitment to supplement. The Assistant Garda Commissioner also <a href="https://www.rte.ie/news/dublin/2023/0724/1396119-dublin-policing/#:~:text=she also told, behaviour in the capital." target="_blank">noted the limits of visibility's effectiveness</a>, suggesting that it would not alone help to address underlying issues of anti-social behaviour, so continued prevention and community supports matter too. </p>
+
+    </section>
+
+    <p>Together, personal habits, community networks and government policy reinforce each other. The first two help in the short term, but lasting change depends on policy that provides Dublin with enough Gardaí in the right places.</p>
+
+    <div class="button-row">
+      <a href="issue.html" class="button-small-transparent">&larr; Back to the issue</a>
+      <a href="survey.html" class="button-small">Take a short survey &rarr;</a>
+    </div>
+
+  </main>
+  
+</body>
+</html>

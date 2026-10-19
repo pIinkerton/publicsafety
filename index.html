@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Homepage</title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <ul class="nav-list">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="issue.html">Issue</a></li>
+      <li><a href="actions.html">Actions</a></li>
+	  <li><a href="survey.html">Survey</a></li>
+	  <li class="nav-end">
+	  	<button id="accessibility-toggle" class ="nav-button" aria-pressed="false">
+		  Accessibility Mode
+		</button>
+	  </li>
+    </ul>
+  </nav>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('accessibility-toggle');
+
+    if (localStorage.getItem('theme') === 'accessibility-mode') {
+      root.setAttribute('data-theme', 'accessibility-mode');
+      toggle.setAttribute('aria-pressed', 'true');
+    }
+
+    toggle.addEventListener('click', () => {
+      const turnOn = root.getAttribute('data-theme') !== 'accessibility-mode';
+
+      if (turnOn) {
+        root.setAttribute('data-theme', 'accessibility-mode');
+      } else {
+        root.removeAttribute('data-theme');
+      }
+      toggle.setAttribute('aria-pressed', String(turnOn));
+      localStorage.setItem('theme', turnOn ? 'accessibility-mode' : 'normal');
+    });
+  </script>
+
+  <main class="container">
+    
+    <h1>Public Safety & Policing Capacity in Dublin</h1>
+
+    <section class="with-image">
+      <figure class="float-right">
+        <img src="view-of-the-liffey-from-liberty-hall-dublin-ireland-conde-nast-traveller-4feb16-Tara-Morgan.jpg" alt="View of the River Liffey from Liberty Hall, Dublin" />
+        <figcaption>The Liffey from Liberty Hall. Photo: Tara Morgan</figcaption>
+      </figure>
+
+      <h2>A City Worth Protecting</h2>
+      <p>Having lived in Dublin all my life, I have come to know it as a lively and diverse city. Rich in history, education, and business, Dublin has been, for as long as I've known it, a wellspring of culture and community. From the bustling streets around O'Connell and Grafton to the residential neighbourhoods where I grew up, the city is a place where people live, work, study, socialise, and thrive. Still, like any large city, Dublin faces its share of challenges in keeping public spaces safe and ensuring that people feel secure as they navigate their everyday lives.</p>
+
+    </section>
+
+    <section class="with-image">
+
+      <h2>What Is It, and Why Does It Matter?</h2>
+      <p>One of the most pressing issues the city continues to face is regarding public safety and policing capacity. Public safety refers to protecting citizens from crime, violence, and other threats to their well-being, while policing capacity denotes the ability of An Garda Síochána to respond to criminal activity, as well as to take preventative measures and maintain a visible presence in the city.</p>
+      <figure class="float-left">
+        <img src="2984684_2_org_2.59690093.jpg" alt="Two Gardaí on patrol among shoppers on Henry Street, Dublin" />
+        <figcaption>Gardaí patrolling Henry Street, Dublin. Photo: Damien Storan / PA Images</figcaption>
+      </figure>
+      <p>I chose this topic as, in my own experiences and interactions with Dublin residents, I have become increasingly aware of the concerns some have shared regarding their safety in public spaces, noting a growing sense of fear and unease when discussing walking through certain areas, using public transport, or being out after dark. Alongside this newfound awareness, I felt a sense of indignation; I believe that everyone deserves the right to feel secure in their hometown without fearing for their safety. As such, I have been motivated to investigate whether public safety and policing capacity measures are meeting the needs of Dublin's residents.</p>
+
+    </section>
+
+    <h2>The Goal</h2>
+    <p>Through this website, I intend to explain the issues currently surrounding public safety and policing capacity in Dublin, investigate how these issues affect its residents, and explore practical solutions. I aim to foster critical, informed discussion regarding Dublin's responsibility to its residents to become a safer city through effective policing, prevention, and trust.</p>
+    <h2>Contact Me</h2>
+    <p>To get in touch about this project, <a href="mailto:burnsa7@tcd.ie">reach out via email</a>.
+      <a href="issue.html" class="button-small button-right">Explore this issue further &rarr;</a></p>
+  </main>
+
+</body>
+</html>
